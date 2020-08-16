@@ -3,6 +3,10 @@ provider "aws" {
   access_key = "AWS_ACCESS_KEY" 
   secret_key = "AWS_SECRET_KEY 
   }
+resource "aws_key_pair" "terraform-demo" {
+  key_name   = "terraform-demo"
+  public_key = file("terraform-demo.pub")
+}
 resource "aws_instance" "my-instance" {
   count         = var.instance_count
   ami           = lookup(var.ami,var.aws_region)
