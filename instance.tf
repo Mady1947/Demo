@@ -3,9 +3,21 @@ provider "aws" {
   access_key = "AWS_ACCESS_KEY" 
   secret_key = "AWS_SECRET_KEY"
   }
-resource "aws_key_pair" "terraform-demo" {
-  key_name   = "terraform-demo"
-  public_key = file("terraform-demo.pub")
+resource "aws_security_group" "default" {
+name_prefix = "test_instance"
+
+ingress {
+from_port = 22
+to_port = 22
+protocol = "tcp"
+cidr_blocks = ["0.0.0.0/0"]
+}
+
+egress {
+from_port = 0
+to_port = 0
+protocol = "-1"
+cidr_blocks = ["0.0.0.0/0"]
 }
 resource "aws_instance" "my-instance" {
   count         = var.instance_count
