@@ -1,20 +1,16 @@
-variable "ami" {
-  type = "map"
+variable "subnet_ids" {
+  type = list(string)
+}
 
-  default = {
-    "us-east-1" = "ami-03dbf9550d4620230"
-    "us-west-1" = "ami-03dbf9550d4620231"
+resource "aws_instance" "server" {
+  # Create one instance for each subnet
+  count = length(var.subnet_ids)
+
+  ami           = "ami-03dbf9550d4620230"
+  instance_type = "t2.micro"
+  subnet_id     = var.subnet_ids[count.index]
+
+  tags = {
+    Name = "Server ${count.index}"
   }
-}
-
-variable "instance_count" {
-  default = "2"
-}
-
-variable "instance_type" {
-  default = "t2.nano"
-}
-
-variable "aws_region" {
-  default = "us-east-1"
 }
