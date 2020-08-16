@@ -1,5 +1,5 @@
 variable "ami" {
-  type = "map"
+  type = map(string)
 
   default = {
     "us-east-1" = "ami-04169656fea786776"
