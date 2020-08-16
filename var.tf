@@ -1,16 +1,25 @@
-variable "subnet_ids" {
-  type = list(string)
+variable "ami" {
+  type = "map"
+
+  default = {
+    "us-east-1" = "ami-04169656fea786776"
+    "us-west-1" = "ami-006fce2a9625b177f"
+  }
 }
 
-resource "aws_instance" "swar" {
-  # Create one instance for each subnet
-  count = length(var.subnet_ids)
+variable "instance_count" {
+  default = "2"
+}
 
-  ami           = "ami-03dbf9550d4620230"
-  instance_type = "t2.micro"
-  subnet_id     = var.subnet_ids[count.index]
+variable "instance_tags" {
+  type = "list"
+  default = ["Terraform-1", "Terraform-2"]
+}
 
-  tags = {
-    Name = "swar ${count.index}"
-  }
+variable "instance_type" {
+  default = "t2.nano"
+}
+
+variable "aws_region" {
+  default = "us-east-1"
 }
