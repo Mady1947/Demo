@@ -1,11 +1,11 @@
 variable "ami" {
   type = map(string)
-  variable "region" {
-   default = "ap-south-1"
-}
   default = {
        "ap-south-1" = "ami-03dbf9550d4620230"
   }
+}
+ variable "region" {
+   default = "ap-south-1"
 }
 
 variable "instance_count" {
