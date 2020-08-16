@@ -1,4 +1,4 @@
-variable "subnet_ids" {
+variable "subnet-c488fd88" {
   type = list(string)
 }
 
