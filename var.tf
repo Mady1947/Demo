@@ -1,5 +1,4 @@
 variable "ami" {
-  region = "ap-south-1"
   type = map(string)
 
   default = {
