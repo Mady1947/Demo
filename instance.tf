@@ -1,17 +1,10 @@
-resource "aws_key_pair" "terraform-demo" {
-  key_name   = "terraform-demo"
-  public_key = "${file("terraform-demo.pub")}"
-}
+resource "aws_instance" "server" {
+  count = 2 # create four similar EC2 instances
 
-resource "aws_instance" "my-instance" {
-  count         = "${var.instance_count}"
-  ami           = "${lookup(var.ami,var.aws_region)}"
-  instance_type = "${var.instance_type}"
-  key_name      = "${aws_key_pair.terraform-demo.key_name}"
-  user_data     = "${file("install_apache.sh")}"
+  ami           = "ami-03dbf9550d4620230"
+  instance_type = "t2.micro"
 
   tags = {
-    Name  = "Terraform-${count.index + 1}"
-    Batch = "5AM"
+    Name = "Server ${count.index}"
   }
 }
