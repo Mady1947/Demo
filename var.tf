@@ -1,9 +1,10 @@
 variable "ami" {
+  region = "ap-south-1"
   type = map(string)
 
   default = {
-    "us-east-1" = "ami-04169656fea786776"
-    "us-west-1" = "ami-006fce2a9625b177f"
+    "ap-south-1" = "ami-04169656fea786776"
+    "ap-south-1" = "ami-006fce2a9625b177f"
   }
 }
 
@@ -21,5 +22,5 @@ variable "instance_type" {
 }
 
 variable "aws_region" {
-  default = "us-east-1"
+  default = "ap-south-1"
 }
