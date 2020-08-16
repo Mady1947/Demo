@@ -12,7 +12,7 @@ variable "instance_count" {
 }
 
 variable "instance_tags" {
-  type = "list"
+  type = list(string)
   default = ["Terraform-1", "Terraform-2"]
 }
 
