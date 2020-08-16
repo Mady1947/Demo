@@ -1,7 +1,7 @@
 provider "aws" { 
   region = "ap-south-1" 
   access_key = "AWS_ACCESS_KEY" 
-  secret_key = "AWS_SECRET_KEY 
+  secret_key = "AWS_SECRET_KEY"
   }
 resource "aws_key_pair" "terraform-demo" {
   key_name   = "terraform-demo"
