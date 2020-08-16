@@ -1,7 +1,4 @@
 
-provider "aws" {
-  region  = "us-east-2"
-}
 variable "ami" {
   type = map(string)
   
