@@ -2,7 +2,7 @@ variable "subnet_ids" {
   type = list(string)
 }
 
-resource "aws_instance" "Test" {
+resource "aws_instance" "swa" {
   # Create one instance for each subnet
   count = length(var.subnet_ids)
 
@@ -11,6 +11,6 @@ resource "aws_instance" "Test" {
   subnet_id     = var.subnet_ids[count.index]
 
   tags = {
-    Name = "Test ${count.index}"
+    Name = "swa ${count.index}"
   }
 }
