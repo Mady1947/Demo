@@ -1,6 +1,3 @@
-provider "aws" {
-  region  = "ap-south-1"
-}
 resource "aws_key_pair" "terraform-demo" {
   key_name   = "terraform-demo"
   public_key = file("terraform-demo.pub")
